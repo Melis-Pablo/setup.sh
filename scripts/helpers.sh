@@ -27,6 +27,16 @@ setup_homebrew() {
     if ! command -v brew >/dev/null 2>&1; then
         log_info "Installing Homebrew..."
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        if [[ $(uname -m) == "arm64" ]]; then
+                    log_info "Adding Homebrew to PATH..."
+                    # Add both recommended Homebrew PATH configurations
+                    echo >> "/Users/${USER}/.zprofile"
+                    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "${HOME}/.zprofile"
+                    eval "$(/opt/homebrew/bin/brew shellenv)"
+                    # Opt out of Homebrew analytics
+                    log_info "Disabling Homebrew analytics..."
+                    brew analytics off
+        fi
     else
         log_info "Updating Homebrew..."
         brew update
