@@ -1,0 +1,24 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+    // Editor settings
+    "insert_final_newline": false,
+    "ensure_final_newline_on_save": false,
+    "tab_size": 4,
+    "autosave": "on_focus_change",
+    // UX settings
+    "ui_font_size": 16,
+    "buffer_font_size": 16,
+    "theme": {
+        "mode": "system",
+        "light": "One Light",
+        "dark": "Yogi Amoled",
+        "font_family": "JetBrains Mono"
+    }
+}
