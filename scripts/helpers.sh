@@ -132,6 +132,46 @@ create_symlinks() {
     done
 }
 
+# SSH URL conversion
+convert_to_ssh_remote() {
+    local repo_dir="$1"
+
+    # Check if we're in a git repository
+    if ! git -C "$repo_dir" rev-parse --git-dir > /dev/null 2>&1; then
+        log_error "Not a git repository: $repo_dir"
+        return 1
+    }
+
+    # Get current remote URL
+    local current_url=$(git -C "$repo_dir" remote get-url origin)
+
+    # Check if it's already an SSH URL
+    if [[ "$current_url" == git@* ]]; then
+        log_info "Remote URL is already using SSH"
+        return 0
+    }
+
+    # Extract username and repository name from HTTPS URL
+    if [[ "$current_url" =~ https://github.com/([^/]+)/([^/]+)(.git)? ]]; then
+        local username="${BASH_REMATCH[1]}"
+        local repo="${BASH_REMATCH[2]}"
+
+        # Construct SSH URL
+        local ssh_url="git@github.com:$username/$repo.git"
+
+        # Update remote URL
+        if git -C "$repo_dir" remote set-url origin "$ssh_url"; then
+            log_success "Successfully converted remote URL to SSH: $ssh_url"
+        else
+            log_error "Failed to update remote URL"
+            return 1
+        fi
+    else
+        log_error "Invalid GitHub URL format: $current_url"
+        return 1
+    fi
+}
+
 show_help() {
     cat << EOF
 Usage: $(basename "$0") [OPTIONS]

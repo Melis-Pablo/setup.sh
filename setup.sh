@@ -36,6 +36,8 @@ main() {
 
     create_symlinks
 
+    convert_to_ssh_remote "${DOTFILES_DIR}"
+
     log_success "Installation completed successfully!"
 }
 
