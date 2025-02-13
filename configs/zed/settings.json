@@ -7,18 +7,22 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-    // Editor settings
-    "insert_final_newline": false,
-    "ensure_final_newline_on_save": false,
-    "tab_size": 4,
-    "autosave": "on_focus_change",
-    // UX settings
-    "ui_font_size": 16,
-    "buffer_font_size": 16,
-    "theme": {
-        "mode": "system",
-        "light": "One Light",
-        "dark": "Yogi Amoled",
-        "font_family": "JetBrains Mono"
-    }
+	// Editor settings
+	"telemetry": {
+		"metrics": false,
+		"diagnostics": false
+	},
+	"insert_final_newline": false,
+	"ensure_final_newline_on_save": false,
+	"hard_tabs": true,
+	"autosave": "on_focus_change",
+	// UX settings
+	"ui_font_size": 16,
+	"buffer_font_size": 16,
+	"theme": {
+		"mode": "system",
+		"light": "One Light",
+		"dark": "XY-Zed",
+		"font_family": "JetBrains Mono"
+	}
 }
