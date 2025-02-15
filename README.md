@@ -114,6 +114,7 @@ cask "application_name"
 - Raycast
 - Shottr
 - Spotify
+- WhatsApp
 - Zed
 
 ## Backup System
