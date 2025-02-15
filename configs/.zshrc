@@ -36,8 +36,8 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 fi
 
 # Keybindings
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
+bindkey '^[[1;2A' history-search-backward  # Shift + Up
+bindkey '^[[1;2B' history-search-forward   # Shift + Down
 
 # History
 HISTSIZE=5000
