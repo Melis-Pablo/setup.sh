@@ -3,3 +3,29 @@ background-opacity = 0.7
 background-blur-radius = 20
 theme = "dark"
 macos-titlebar-style = tabs
+working-directory = /Users/seneca/Developer
+quit-after-last-window-closed = true
+
+
+#################
+#	ICON-THEME	#
+#################
+# macos-icon = xray
+	# official
+	# blueprint
+	# chalkboard
+	# microchip
+	# glass
+	# holographic
+	# paper
+	# retro
+	# xray
+	# custom-style
+macos-icon = custom-style
+macos-icon-frame = chrome
+	# aluminum
+	# beige
+	# plastic
+	# chrome
+macos-icon-ghost-color = #FFFFFF
+macos-icon-screen-color = #6B31E3
