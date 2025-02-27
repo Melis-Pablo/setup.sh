@@ -95,6 +95,7 @@ cask "application_name"
 ## Currently Installed Software
 
 ### CLI Tools
+- cmatrix
 - ffmpeg
 - fzf
 - neovim
@@ -108,12 +109,14 @@ cask "application_name"
 - Docker
 - Eloston Chromium
 - Figma
+- Font-jetbrains-mono
 - Ghostty
 - Obsidian
 - Private Internet Access
 - Raycast
 - Shottr
 - Spotify
+- UTM
 - WhatsApp
 - Zed
 
