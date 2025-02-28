@@ -1,6 +1,6 @@
-# M1 Mac Setup Configuration
+# Mac Setup Configuration
 
-A streamlined system for quickly reconfiguring an M1 Mac after system resets. This repository contains dotfiles, configuration scripts, and automation tools to get your development environment up and running with minimal effort.
+A streamlined system for quickly reconfiguring a Mac after system resets. This repository contains dotfiles, configuration scripts, and automation tools to get your development environment up and running with minimal effort.
 
 ## Features
 
@@ -37,7 +37,7 @@ git clone https://github.com/YOUR_USERNAME/setup.sh.git ~/.dotfiles && cd ~/.dot
 
 ## Prerequisites
 
-- M1 Mac running macOS
+- Mac running macOS
 - Terminal access
 - Internet connection
 - Git (for cloning this repository)
