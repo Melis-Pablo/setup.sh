@@ -65,7 +65,6 @@ alias la='ls -a'
 alias lla='ls -la'
 alias vim='nvim'
 alias c='clear'
-alias code='zed'
 
 # Shell integrations
 eval "$(fzf --zsh)"
