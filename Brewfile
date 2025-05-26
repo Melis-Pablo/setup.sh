@@ -1,4 +1,3 @@
-tap "homebrew/bundle"
 brew "cmatrix"
 brew "ffmpeg"
 brew "fzf"
