@@ -12,6 +12,7 @@ declare -a CONFIG_MAPPINGS=(
     "zed:.config/zed"
     # Individual files
     ".zshrc:.zshrc"
+    ".gitconfig:.gitconfig"
 )
 
 # Logging functions
@@ -19,6 +20,37 @@ log_header() { printf "\n\033[1m%s\033[0m\n" "$@"; }
 log_success() { printf "\033[0;32m✓ %s\033[0m\n" "$@"; }
 log_error() { printf "\033[0;31m⨯ %s\033[0m\n" >&2 "$@"; }
 log_info() { printf "\033[0;34m➜ %s\033[0m\n" "$@"; }
+
+# Git configuration setup
+setup_gitconfig() {
+    log_info "Setting up Git configuration..."
+    
+    local gitconfig_path="${DOTFILES_DIR}/configs/.gitconfig"
+    
+    # Check if template exists
+    if [[ ! -f "${gitconfig_path}" ]]; then
+        log_error "Git config template not found at ${gitconfig_path}"
+        return 1
+    fi
+    
+    # Prompt for Git user information
+    read -p "Enter your GitHub username: " git_username
+    read -p "Enter your GitHub email: " git_email
+    
+    # Validate inputs
+    if [[ -z "${git_username}" ]] || [[ -z "${git_email}" ]]; then
+        log_error "Git username and email are required"
+        return 1
+    fi
+    
+    log_info "Updating .gitconfig template with your information..."
+    
+    # Replace placeholders in the template
+    sed -i '' "s/{{GIT_USERNAME}}/${git_username}/g" "${gitconfig_path}"
+    sed -i '' "s/{{GIT_EMAIL}}/${git_email}/g" "${gitconfig_path}"
+    
+    log_success "Updated .gitconfig for ${git_username} (${git_email})"
+}
 
 # Homebrew setup
 setup_homebrew() {
@@ -140,7 +172,7 @@ convert_to_ssh_remote() {
     if ! git -C "$repo_dir" rev-parse --git-dir > /dev/null 2>&1; then
         log_error "Not a git repository: $repo_dir"
         return 1
-    }
+    fi
 
     # Get current remote URL
     local current_url=$(git -C "$repo_dir" remote get-url origin)
@@ -149,7 +181,7 @@ convert_to_ssh_remote() {
     if [[ "$current_url" == git@* ]]; then
         log_info "Remote URL is already using SSH"
         return 0
-    }
+    fi
 
     # Extract username and repository name from HTTPS URL
     if [[ "$current_url" =~ https://github.com/([^/]+)/([^/]+)(.git)? ]]; then
@@ -180,6 +212,7 @@ Options:
     --no-backup    Skip backing up existing configurations
     --no-brew      Skip Homebrew installation and updates
     --no-ssh       Skip SSH key generation
+    --no-git       Skip Git configuration setup
     --help         Show this help message
 EOF
 }

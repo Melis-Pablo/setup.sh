@@ -20,13 +20,17 @@ main() {
             --no-backup) ENABLE_BACKUP=false ;;
             --no-brew) ENABLE_BREW=false ;;
             --no-ssh) ENABLE_SSH=false ;;
+            --no-git) ENABLE_GIT=false ;;
             --help) show_help; exit 0 ;;
             *) log_error "Unknown option: $1"; exit 1 ;;
         esac
         shift
     done
 
-    # Setup components based on configuration
+    if [[ $ENABLE_GIT == true ]]; then
+        setup_gitconfig
+    fi
+    
     setup_ssh_keys
 
     if [[ $ENABLE_BREW == true ]]; then
@@ -39,6 +43,20 @@ main() {
     convert_to_ssh_remote "${DOTFILES_DIR}"
 
     log_success "Installation completed successfully!"
+    
+    # Show final status
+    log_info "Setup Summary:"
+    if [[ $ENABLE_GIT == true ]]; then
+        log_info "  Git configuration: Created and symlinked"
+    fi
+    if [[ $ENABLE_SSH == true ]]; then
+        log_info "  SSH keys: Configured"
+    fi
+    if [[ $ENABLE_BREW == true ]]; then
+        log_info "  Homebrew packages: Installed"
+    fi
+    
+    log_info "Your Mac is now configured and ready to use!"
 }
 
 main "$@"

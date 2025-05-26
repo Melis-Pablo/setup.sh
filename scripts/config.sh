@@ -8,3 +8,4 @@ SSH_KEY_PATH="${HOME}/.ssh/id_ed25519"
 ENABLE_BACKUP=true
 ENABLE_BREW=true
 ENABLE_SSH=true
+ENABLE_GIT=true
