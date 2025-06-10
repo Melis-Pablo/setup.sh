@@ -1,1 +1,345 @@
+# Cross-Platform Global Git Ignore File
+# This file contains patterns that should be ignored across all repositories
+
+# =============================================================================
+# Operating System Files
+# =============================================================================
+
+# macOS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.AppleDouble
+.LSOverride
+Icon
+
+# macOS Directories
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Windows (for cross-platform projects)
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# =============================================================================
+# IDE and Editor Files
+# =============================================================================
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+.history/
+
+# Zed Editor
+.zed/
+
+# JetBrains IDEs
+.idea/
+*.iws
+*.iml
+*.ipr
+.idea_modules/
+atlassian-ide-plugin.xml
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+Session.vim
+Sessionx.vim
+.netrwhist
+*~
+tags
+[._]*.un~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# Atom
+.atom/
+
+# =============================================================================
+# Development Tools and Build Systems
+# =============================================================================
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.npm
+.eslintcache
+.yarn-integrity
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Rust
+target/
+Cargo.lock
+*.rs.bk
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+# Java
+*.class
+*.log
+*.ctxt
+.mtj.tmp/
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
+
+# C/C++
+*.d
+*.slo
+*.lo
+*.o
+*.obj
+*.gch
+*.pch
+*.so
+*.dylib
+*.dll
+*.mod
+*.smod
+*.lai
+*.la
+*.a
+*.lib
+*.exe
+*.out
+*.app
+
+# =============================================================================
+# Package Managers
+# =============================================================================
+
+# Homebrew
+Brewfile.lock.json
+
+# Composer (PHP)
+vendor/
+composer.lock
+
+# Bundler (Ruby)
+.bundle/
+Gemfile.lock
+
+# CocoaPods (iOS)
+Pods/
+*.xcworkspace
+
+# =============================================================================
+# Databases
+# =============================================================================
+
+*.sqlite
+*.sqlite3
+*.db
+
+# =============================================================================
+# Logs and Debugging
+# =============================================================================
+
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.nyc_output
+.grunt
+bower_components
+.lock-wscript
+.wafpickle-*
+.node_repl_history
+*.tgz
+.yarn-integrity
+.env
+.env.test
+.cache
+.parcel-cache
+.next
+out
+.nuxt
+dist
+.cache/
+.vuepress/dist
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port
+
+# =============================================================================
+# Temporary and Cache Files
+# =============================================================================
+
+*.tmp
+*.bak
+*.swp
+*.swo
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.target
+.metadata
+.gradle
+.classpath
+.project
+.cache
+.sass-cache/
+.connect.lock
+.coverage
+.nyc_output
+.cache
+
+# =============================================================================
+# Security and Credentials
+# =============================================================================
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# SSH keys
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+*.pem
+*.key
+
+# API keys and secrets
+*.secret
+*secret*
+.secrets/
+secrets/
+.credentials
+credentials
+
+# =============================================================================
+# Backup Files
+# =============================================================================
+
+*.bak
+*.backup
+*.old
+*.orig
+*.save
+*~
+
+# =============================================================================
+# Archive Files
+# =============================================================================
+
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar

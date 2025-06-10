@@ -1,193 +1,245 @@
-# Mac Setup Configuration
+# Cross-Platform Development Environment Setup
 
-A streamlined system for quickly reconfiguring a Mac after system resets. This repository contains dotfiles, configuration scripts, and automation tools to get your development environment up and running with minimal effort.
+A comprehensive system for quickly configuring development environments on both **macOS** and **Asahi Linux + Fedora**. This repository contains dotfiles, configuration scripts, and automation tools to get your development environment up and running with minimal effort across platforms.
 
-## Features
+## 🚀 Features
 
+- **Cross-Platform Compatibility**: Works seamlessly on macOS and Asahi Linux + Fedora
+- **Intelligent Platform Detection**: Automatically adapts to your operating system
+- **Dual Package Management**: Uses Homebrew on macOS, DNF on Fedora, with optional Linuxbrew
 - **Automated Setup**: Single command to configure your entire system
 - **Git Profile Setup**: Automated Git configuration with GitHub credentials
-- **Homebrew Integration**: Automated package and application installation via Brewfile
+- **Package Mapping**: Translates packages between Homebrew and DNF automatically
 - **Dotfiles Management**: Organized configuration files with automatic symlinking
 - **Backup System**: Automatic backup of existing configurations before replacement
-- **SSH Key Management**: Automated SSH key generation and setup
+- **SSH Key Management**: Automated SSH key generation and setup with platform-specific clipboard integration
+- **Font Installation**: Cross-platform font management
+- **Asahi Linux Optimizations**: Special handling for Apple Silicon Linux
 - **Modular Design**: Easy to modify and extend
 
-## Directory Structure
+## 🖥️ Supported Platforms
+
+- **macOS** (Intel and Apple Silicon)
+- **Asahi Linux + Fedora** on Apple Silicon Macs
+- **Fedora Linux** (other variants with DNF)
+
+## 📁 Directory Structure
 
 ```
 .
-├── setup.sh              # Main setup script
-├── configs/             # Configuration files
-│   ├── ghostty/        # Ghostty terminal configs
-│   ├── nvim/          # Neovim configs
-│   ├── ohmyposh/      # Oh My Posh configs
-│   ├── zed/           # Zed editor configs
-│   ├── .gitconfig     # Git configuration (template with placeholders)
-│   └── .zshrc         # ZSH configuration
-├── scripts/           # Helper scripts
-│   ├── config.sh      # Configuration variables
-│   └── helpers.sh     # Utility functions
-├── Brewfile           # Homebrew packages and apps
-└── README.md          # This file
+├── setup.sh                 # Main cross-platform setup script
+├── configs/                 # Configuration files
+│   ├── ghostty/            # Cross-platform Ghostty terminal configs
+│   ├── nvim/               # Neovim configs (cross-platform)
+│   ├── ohmyposh/           # Oh My Posh configs (cross-platform)
+│   ├── zed/                # Zed editor configs
+│   ├── .gitconfig          # Git configuration template
+│   ├── .gitignore_global   # Global gitignore
+│   └── .zshrc              # Cross-platform ZSH configuration
+├── scripts/                # Helper scripts
+│   ├── config.sh           # Cross-platform configuration variables
+│   └── helpers.sh          # Platform detection and utility functions
+├── Packages                # Cross-platform package definitions (YAML)
+└── README.md               # This file
 ```
 
-## One-Line Installation
+## ⚡ Quick Start
+
+### One-Line Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/setup.sh.git ~/.dotfiles && cd ~/.dotfiles && ./setup.sh
+git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && ./setup.sh
 ```
 
-## Prerequisites
+### Manual Installation
 
-- Mac running macOS
-- Terminal access
-- Internet connection
-- Git (for cloning this repository)
-
-## Quick Start
-
-1. Clone the repository:
+1. **Clone the repository**:
    ```bash
-   git clone <repository-url> ~/.dotfiles
+   git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/.dotfiles
    cd ~/.dotfiles
    ```
 
-2. Run the setup script:
+2. **Run the setup script**:
    ```bash
    ./setup.sh
    ```
 
-3. Follow the interactive prompts:
+3. **Follow the interactive prompts**:
    - Provide GitHub username and email
    - Enter email for SSH key generation
+   - Confirm package installations
 
-## Configuration Options
+## 🛠️ Prerequisites
+
+### All Platforms
+- Terminal access
+- Internet connection
+- Git (for cloning this repository)
+
+### macOS
+- macOS 10.15+ (Catalina or later)
+- Command Line Tools for Xcode (installed automatically)
+
+### Linux/Asahi Linux
+- Fedora 35+ or compatible distribution
+- DNF package manager
+- `curl` and `unzip` packages
+
+## ⚙️ Configuration Options
 
 The setup script accepts several command-line options:
 
-- `--no-backup`: Skip backing up existing configurations
-- `--no-brew`: Skip Homebrew installation and updates
-- `--no-ssh`: Skip SSH key generation
-- `--no-git`: Skip Git configuration setup
-- `--help`: Show help message
-
-Example:
 ```bash
-./setup.sh --no-backup --no-ssh
+# Skip backing up existing configurations
+./setup.sh --no-backup
+
+# Skip package installation (dotfiles only)
+./setup.sh --no-packages
+
+# Skip SSH key generation
+./setup.sh --no-ssh
+
+# Skip Git configuration setup
+./setup.sh --no-git
+
+# Install Homebrew on Linux for consistency
+./setup.sh --brew-linux
+
+# Show help
+./setup.sh --help
 ```
 
-## Interactive Setup Process
+**Example combinations**:
+```bash
+# Minimal setup (dotfiles only)
+./setup.sh --no-packages --no-ssh
 
-The script will guide you through several configuration steps:
+# Full setup with Homebrew on Linux
+./setup.sh --brew-linux
+```
 
-### 1. Git Configuration
+## 📋 Interactive Setup Process
+
+The script guides you through several configuration steps:
+
+### 1. Platform Detection
+- Automatically detects macOS vs. Linux
+- Identifies Asahi Linux on Apple Silicon
+- Determines available package managers
+
+### 2. Git Configuration
 - Prompts for GitHub username and email
-- Updates the template .gitconfig file by replacing placeholders:
-  - `{{GIT_USERNAME}}` → Your GitHub username
-  - `{{GIT_EMAIL}}` → Your GitHub email
-- Template includes comprehensive Git settings:
-  - User credentials
-  - Default editor (nvim)
+- Updates template `.gitconfig` with your information
+- Sets up global gitignore
 
-### 2. SSH Key Setup
-- Generates ED25519 SSH keys
+### 3. Package Installation
+**macOS**: Uses Homebrew for all packages
+**Linux**: Uses DNF for system packages, Flatpak for GUI apps
+
+### 4. SSH Key Setup
+- Generates ED25519 SSH keys if needed
 - Adds keys to SSH agent
-- Copies public key to clipboard
-- Displays public key for GitHub/service setup
+- Copies public key to clipboard (platform-specific)
+- Shows public key for GitHub/service setup
 
-## Customization
+### 5. Font Installation
+- **macOS**: Via Homebrew casks
+- **Linux**: System packages or manual download/install
+
+## 📦 Package Management
+
+### Automatic Translation
+The setup script automatically translates packages between platforms:
+
+| Category | macOS (Homebrew) | Linux (DNF/Flatpak) |
+|----------|------------------|---------------------|
+| **Development** | `node` | `nodejs npm` |
+| **Editors** | `visual-studio-code` | `flatpak:com.visualstudio.code` |
+| **Tools** | `docker` | `docker docker-compose` |
+| **Media** | `spotify` | `flatpak:com.spotify.Client` |
+
+### Currently Installed Software
+
+#### CLI Tools
+- **Development**: git, neovim, node, vim, lazygit
+- **Utilities**: tree, fzf, ripgrep, ffmpeg, yt-dlp
+- **Terminal**: oh-my-posh, cmatrix
+- **Fonts**: JetBrains Mono
+
+#### GUI Applications
+- **Development**: Visual Studio Code, Zed, Figma
+- **Productivity**: Obsidian, Raycast (macOS) / Albert (Linux)
+- **Media**: Blender, Spotify, Steam
+- **Utilities**: Docker, Ghostty*, UTM (macOS) / QEMU (Linux)
+- **Communication**: WhatsApp Desktop
+- **Browsers**: Chromium
+
+*Note: Ghostty has limited Linux support*
+
+### Platform-Specific Notes
+
+#### macOS
+- All packages installed via Homebrew
+- Casks used for GUI applications
+- Automatic Rosetta 2 installation on Apple Silicon
+
+#### Linux/Fedora
+- System packages via DNF
+- GUI applications via Flatpak when possible
+- RPM Fusion repositories enabled automatically
+- Font cache updated automatically
+
+#### Asahi Linux Specific
+- GPU acceleration with Mesa drivers
+- Apple Silicon optimizations
+- PipeWire audio system
+- 16K page size compatibility considerations
+
+## 🎨 Customization
+
+### Adding New Packages
+
+1. **Edit the package mapping** in `scripts/helpers.sh`:
+   ```bash
+   PACKAGE_MAP["new-tool"]="homebrew-name dnf-name"
+   GUI_APP_MAP["new-app"]="flatpak:app.id"
+   ```
+
+2. **Or modify the YAML** configuration in `Packages` file
 
 ### Adding New Dotfiles
 
-1. Add your configuration files to the `configs/` directory
-2. Update the `CONFIG_MAPPINGS` array in `scripts/helpers.sh`:
+1. **Add files** to the `configs/` directory
+2. **Update the mapping** in `scripts/helpers.sh`:
    ```bash
-   declare -a CONFIG_MAPPINGS=(
-       "your_config:target_path"
+   CONFIG_MAPPINGS+=(
+       "your_config:.config/target_path"
    )
    ```
 
-### Modifying Homebrew Packages
+### Platform-Specific Configurations
 
-Edit the `Brewfile` to add or remove packages:
-```ruby
-# Add a new package
-brew "package_name"
-
-# Add a new cask
-cask "application_name"
+Use platform detection in configuration files:
+```bash
+# In .zshrc or other configs
+case "$PLATFORM" in
+    macos)
+        # macOS-specific settings
+        ;;
+    linux)
+        # Linux-specific settings
+        ;;
+esac
 ```
 
-### Customizing Git Configuration
+## 🔐 Security Features
 
-The Git configuration uses a template file at `configs/.gitconfig` with placeholders:
-- `{{GIT_USERNAME}}` - Replaced with your GitHub username
-- `{{GIT_EMAIL}}` - Replaced with your GitHub email
+- **SSH Keys**: ED25519 encryption with platform-specific keychain integration
+- **Backups**: Existing configurations backed up before replacement
+- **Permissions**: Proper Unix permissions set automatically (600 for keys, 644 for configs)
+- **Validation**: Input validation for all user-provided data
 
-You can customize the template by editing `configs/.gitconfig` to:
-- Change the default editor
-- Add/modify aliases
-- Adjust color schemes
-- Configure merge/diff tools
-- Add additional Git settings
-
-The placeholders will be automatically replaced during setup.
-
-## Currently Installed Software
-
-### CLI Tools
-- cmatrix
-- ffmpeg
-- fzf
-- lazygit
-- neovim
-- node
-- oh-my-posh
-- ripgrep
-- tree
-- vim
-- yt-dlp
-
-### Applications
-- Blender
-- Docker
-- Eloston Chromium
-- Figma
-- Font-jetbrains-mono
-- Ghostty
-- Obsidian
-- Private Internet Access
-- Raycast
-- Shottr
-- Spotify
-- Steam
-- UTM
-- Visual Studio Code
-- WhatsApp
-- Zed
-
-## Backup System
-
-The script automatically creates timestamped backups of existing configurations in:
-```
-~/.config/.dotfiles_backup/YYYYMMDD_HHMMSS/
-```
-
-## SSH Key Management
-
-The script can automatically:
-- Generate new ED25519 SSH keys
-- Add keys to the SSH agent
-- Copy public key to clipboard (on macOS)
-- Display the public key for easy access
-
-## Git Configuration
-
-The generated `.gitconfig` includes:
-- User credentials (name and email)
-- Neovim as default editor
-
-## Troubleshooting
+## 🚨 Troubleshooting
 
 ### Common Issues
 
@@ -197,60 +249,120 @@ The generated `.gitconfig` includes:
    chmod +x scripts/*.sh
    ```
 
-2. **Homebrew Installation Fails**
-   - Ensure you have internet connectivity
-   - Check system requirements at brew.sh
+2. **Package Manager Not Found**
+   ```bash
+   # Fedora/RHEL
+   sudo dnf install dnf-plugins-core
+   
+   # macOS - install Xcode Command Line Tools
+   xcode-select --install
+   ```
 
-3. **Symlink Errors**
-   - Run with `--no-backup` to force override
-   - Check file permissions in target directories
+3. **Git Configuration Issues**
+   - Ensure valid GitHub username and email
+   - Check template file exists: `configs/.gitconfig`
 
-4. **Git Configuration Issues**
-   - Ensure you provide valid GitHub username and email
-   - The .gitconfig will be created even if GitHub credentials are invalid
+4. **Font Issues on Linux**
+   ```bash
+   fc-cache -fv
+   ```
 
-## Maintenance
+5. **Asahi Linux Specific**
+   - Ensure you're running latest kernel updates
+   - Check GPU acceleration: `glxinfo | grep renderer`
+
+### Platform-Specific Debugging
+
+#### macOS
+```bash
+# Check Homebrew installation
+brew doctor
+
+# Verify package installations
+brew list
+brew list --cask
+```
+
+#### Linux
+```bash
+# Check DNF configuration
+dnf repolist
+
+# Verify Flatpak setup
+flatpak list
+
+# Check font installation
+fc-list | grep -i jetbrains
+```
+
+## 🔄 Maintenance
 
 ### Regular Updates
 
-1. Update Homebrew packages:
+1. **Update packages**:
    ```bash
-   brew bundle dump --force  # Update Brewfile with current packages
-   git commit -am "Update Brewfile packages"
+   # macOS
+   brew update && brew upgrade && brew cleanup
+   
+   # Linux
+   sudo dnf upgrade
+   flatpak update
    ```
 
-2. Update configurations:
+2. **Update dotfiles repository**:
    ```bash
-   # After making changes to any configs
-   git add configs/
-   git commit -m "Update configurations"
+   cd ~/.dotfiles
+   git pull
+   ./setup.sh --no-backup  # Re-run setup if needed
    ```
 
-3. Update Git configuration:
+3. **Backup current state**:
    ```bash
-   # Re-run just the Git setup
-   ./setup.sh --no-backup --no-brew --no-ssh --no-hostname
+   # Create new backup before changes
+   ./setup.sh --no-packages --no-ssh --no-git
    ```
 
-## Security Considerations
-
-- SSH keys are generated with ED25519 encryption
-- Git credentials are stored in macOS Keychain
-- Existing configurations are backed up before replacement
-- The script requires explicit confirmation for destructive operations
-
-## Contributing
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Test on both macOS and Linux if possible
+4. Commit changes: `git commit -m 'Add amazing feature'`
+5. Push to branch: `git push origin feature/amazing-feature`
+6. Open a Pull Request
 
-## License
+### Development Guidelines
 
-This project is open source and available under the MIT License.
+- Test changes on both macOS and Linux when possible
+- Use platform detection for platform-specific features
+- Update documentation for any new features
+- Maintain backward compatibility when possible
 
-## Acknowledgments
+## 📄 License
 
-This setup is designed for personal use but draws inspiration from various dotfiles repositories and Mac setup scripts in the developer community.
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🙏 Acknowledgments
+
+This setup draws inspiration from various dotfiles repositories and cross-platform development practices in the community. Special thanks to:
+
+- The Asahi Linux project for making Linux on Apple Silicon possible
+- Homebrew team for cross-platform package management
+- Oh My Posh for cross-platform shell theming
+- The dotfiles community for sharing configuration best practices
+
+## 📞 Support
+
+- **Issues**: Report bugs via GitHub Issues
+- **Discussions**: Use GitHub Discussions for questions
+- **Platform-specific help**: Tag issues with `macos`, `linux`, or `asahi-linux`
+
+## 🗺️ Roadmap
+
+- [ ] Support for additional Linux distributions (Ubuntu, Arch)
+- [ ] Windows Subsystem for Linux (WSL) compatibility
+- [ ] Container-based development environment option
+- [ ] GUI configuration tool
+- [ ] Automated testing on multiple platforms
+- [ ] Zsh plugin management improvements
+- [ ] Advanced Asahi Linux optimizations

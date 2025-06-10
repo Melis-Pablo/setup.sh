@@ -1,28 +1,321 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
 {
-	// Editor settings
-	"telemetry": {
-		"metrics": false,
-		"diagnostics": false
-	},
-	"insert_final_newline": false,
-	"ensure_final_newline_on_save": false,
-	"hard_tabs": true,
-	"autosave": "on_focus_change",
-	// UX settings
-	"ui_font_size": 16,
-	"buffer_font_size": null,
-	"theme": {
-		"mode": "system",
-		"light": "Vercel Light",
-		"dark": "Vercel Dark",
-		"font_family": "JetBrains Mono"
-	}
+  // Cross-Platform Zed Editor Configuration
+  // Compatible with macOS and Linux (where Zed is available)
+
+  // Privacy and telemetry
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
+
+  // File handling
+  "insert_final_newline": false,
+  "ensure_final_newline_on_save": false,
+  "hard_tabs": true,
+  "autosave": "on_focus_change",
+  "remove_trailing_whitespace_on_save": true,
+
+  // Editor appearance
+  "ui_font_size": 16,
+  "buffer_font_size": null,
+  "buffer_font_family": "JetBrains Mono",
+  "ui_font_family": "system",
+
+  // Theme configuration with platform detection
+  "theme": {
+    "mode": "system",
+    "light": "Vercel Light",
+    "dark": "Vercel Dark"
+  },
+
+  // Line numbers and gutters
+  "relative_line_numbers": false,
+  "show_line_numbers": true,
+  "gutter": {
+    "line_numbers": true,
+    "code_actions": true,
+    "folds": true
+  },
+
+  // Scrolling and cursor
+  "scroll_beyond_last_line": "one_page",
+  "cursor_blink": false,
+  "show_scrollbars": {
+    "vertical": true,
+    "horizontal": "auto"
+  },
+
+  // Indentation and formatting
+  "tab_size": 4,
+  "soft_wrap": "editor_width",
+  "show_whitespaces": "selection",
+  "indent_guides": {
+    "enabled": true,
+    "line_width": 1,
+    "active_line_width": 2,
+    "coloring": "indent_aware"
+  },
+
+  // Search and navigation
+  "search": {
+    "whole_word": false,
+    "case_sensitive": false,
+    "include_ignored": false,
+    "regex": false
+  },
+
+  // File tree and project panel
+  "project_panel": {
+    "button": true,
+    "default_width": 240,
+    "dock": "left",
+    "file_icons": true,
+    "folder_icons": true,
+    "git_status": true,
+    "indent_size": 20,
+    "auto_reveal_entries": true
+  },
+
+  // Outline panel
+  "outline_panel": {
+    "button": true,
+    "default_width": 300,
+    "dock": "right",
+    "file_icons": true,
+    "folder_icons": true,
+    "indent_size": 20
+  },
+
+  // Language servers and completion
+  "lsp": {
+    "rust-analyzer": {
+      "binary": {
+        "path": "rust-analyzer"
+      }
+    }
+  },
+
+  // Auto-completion
+  "completion": {
+    "trigger_on_input": true,
+    "show_completion_documentation": true
+  },
+
+  // Hover and documentation
+  "hover": {
+    "enabled": true,
+    "delay_ms": 1500
+  },
+
+  // Inlay hints
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true,
+    "edit_debounce_ms": 700,
+    "scroll_debounce_ms": 50
+  },
+
+  // Git integration
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": false,
+      "delay_ms": 600
+    }
+  },
+
+  // Terminal integration
+  "terminal": {
+    "alternate_scroll": "off",
+    "blinking": "terminal_controlled",
+    "copy_on_select": false,
+    "dock": "bottom",
+    "default_width": 640,
+    "default_height": 320,
+    "working_directory": "current_project_directory",
+    "shell": {
+      // Platform-specific shell configuration
+      // On macOS, this will typically be zsh
+      // On Linux, this will be the user's default shell
+      "program": "zsh"
+    },
+    "env": {
+      // Platform-specific environment variables can be set here
+      "TERM": "xterm-256color"
+    }
+  },
+
+  // Vim mode (optional)
+  "vim_mode": false,
+  "vim": {
+    "use_system_clipboard": "always",
+    "use_multiline_find": false,
+    "use_smartcase_find": false
+  },
+
+  // Assistant and AI features
+  "assistant": {
+    "enabled": true,
+    "version": "2",
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-20241022"
+    }
+  },
+
+  // Features configuration
+  "features": {
+    "copilot": false,
+    "inline_completion_provider": "none"
+  },
+
+  // Collaboration
+  "collaboration_panel": {
+    "button": false,
+    "dock": "left",
+    "default_width": 240
+  },
+
+  // Chat panel
+  "chat_panel": {
+    "button": false,
+    "dock": "right",
+    "default_width": 240
+  },
+
+  // Notification panel
+  "notification_panel": {
+    "button": true,
+    "dock": "bottom",
+    "default_width": 380,
+    "default_height": 200
+  },
+
+  // Preview tabs
+  "preview_tabs": {
+    "enabled": true,
+    "enable_preview_from_file_finder": true,
+    "enable_preview_from_code_navigation": true
+  },
+
+  // Tab bar
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": true
+  },
+
+  // Status bar
+  "status_bar": {
+    "show": true
+  },
+
+  // Toolbar
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": true,
+    "selections_menu": true
+  },
+
+  // Scrollbar markers
+  "scrollbar": {
+    "show": true,
+    "cursors": true,
+    "symbols": true,
+    "selected_symbol": true,
+    "diagnostics": true,
+    "git_diff": true,
+    "search_results": true
+  },
+
+  // Experimental features
+  "experimental": {
+    // Platform-specific experimental features can be enabled here
+    "theme_overrides": {}
+  },
+
+  // File associations
+  "file_types": {
+    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
+    "JSON": ["*.json", "*.jsonc"],
+    "Markdown": ["*.md", "*.markdown"],
+    "TypeScript": ["*.ts", "*.tsx"],
+    "JavaScript": ["*.js", "*.jsx"],
+    "Rust": ["*.rs"],
+    "Python": ["*.py"],
+    "Go": ["*.go"],
+    "Shell Script": ["*.sh", "*.bash", "*.zsh"],
+    "YAML": ["*.yml", "*.yaml"]
+  },
+
+  // Language-specific settings
+  "languages": {
+    "TypeScript": {
+      "tab_size": 2,
+      "hard_tabs": false
+    },
+    "JavaScript": {
+      "tab_size": 2,
+      "hard_tabs": false
+    },
+    "JSON": {
+      "tab_size": 2,
+      "hard_tabs": false
+    },
+    "YAML": {
+      "tab_size": 2,
+      "hard_tabs": false
+    },
+    "Markdown": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "soft_wrap": "preferred_line_length",
+      "preferred_line_length": 80
+    },
+    "Python": {
+      "tab_size": 4,
+      "hard_tabs": false
+    },
+    "Rust": {
+      "tab_size": 4,
+      "hard_tabs": false
+    },
+    "Go": {
+      "tab_size": 4,
+      "hard_tabs": true
+    },
+    "C": {
+      "tab_size": 4,
+      "hard_tabs": true
+    },
+    "C++": {
+      "tab_size": 4,
+      "hard_tabs": true
+    }
+  },
+
+  // Platform-specific customizations
+  // These will be automatically ignored on unsupported platforms
+  "use_autoclose": true,
+  "always_treat_brackets_as_autoclosed": false,
+  "auto_update": true,
+  "hour_format": "hour24",
+  "auto_install_extensions": {
+    "enabled": false
+  },
+
+  // Performance settings
+  "journal": {
+    "path": "~/.local/share/zed/logs",
+    "hour_format": "hour24"
+  },
+
+  // Custom keybindings can be added here
+  "bindings": {
+    // Platform-specific keybindings would go here
+    // Example for cross-platform save:
+    // "cmd-s": "workspace::Save", // macOS
+    // "ctrl-s": "workspace::Save"  // Linux
+  }
 }

@@ -1,0 +1,277 @@
+# Cross-Platform Package Configuration
+# This file defines packages for both macOS (Homebrew) and Linux (DNF/Flatpak)
+# Format: package_name: { macos: "brew-package", linux: "dnf-package" }
+
+# If you prefer the original Brewfile format, rename this to packages.yml
+# and the setup script will use the helper functions to install equivalents
+
+# Development Tools
+packages:
+  cli_tools:
+    git:
+      macos: "git"
+      linux: "git"
+      description: "Version control system"
+    
+    neovim:
+      macos: "neovim"
+      linux: "neovim"
+      description: "Modern Vim-based editor"
+    
+    vim:
+      macos: "vim"
+      linux: "vim"
+      description: "Classic text editor"
+    
+    node:
+      macos: "node"
+      linux: "nodejs npm"
+      description: "JavaScript runtime and package manager"
+    
+    tree:
+      macos: "tree"
+      linux: "tree"
+      description: "Directory tree visualization"
+    
+    fzf:
+      macos: "fzf"
+      linux: "fzf"
+      description: "Fuzzy finder"
+    
+    ripgrep:
+      macos: "ripgrep"
+      linux: "ripgrep"
+      description: "Fast grep alternative"
+    
+    lazygit:
+      macos: "lazygit"
+      linux: "lazygit"
+      description: "Git TUI"
+    
+    oh_my_posh:
+      macos: "oh-my-posh"
+      linux: "special:oh-my-posh"  # Requires special installation
+      description: "Cross-platform prompt theme"
+
+  media_tools:
+    ffmpeg:
+      macos: "ffmpeg"
+      linux: "ffmpeg"
+      description: "Media processing toolkit"
+    
+    yt_dlp:
+      macos: "yt-dlp"
+      linux: "yt-dlp"
+      description: "YouTube downloader"
+    
+    cmatrix:
+      macos: "cmatrix"
+      linux: "cmatrix"
+      description: "Matrix-style terminal effect"
+
+  fonts:
+    jetbrains_mono:
+      macos: "font-jetbrains-mono"
+      linux: "jetbrains-mono-fonts"
+      description: "JetBrains Mono font family"
+
+# GUI Applications
+gui_applications:
+  development:
+    visual_studio_code:
+      macos: "visual-studio-code"
+      linux: "flatpak:com.visualstudio.code"
+      description: "Code editor"
+    
+    zed:
+      macos: "zed"
+      linux: "flatpak:dev.zed.Zed"
+      description: "Modern code editor"
+      notes: "Limited Linux support"
+    
+    figma:
+      macos: "figma"
+      linux: "flatpak:io.github.Figma_Linux.figma_linux"
+      description: "Design tool"
+
+  productivity:
+    obsidian:
+      macos: "obsidian"
+      linux: "flatpak:md.obsidian.Obsidian"
+      description: "Note-taking app"
+    
+    raycast:
+      macos: "raycast"
+      linux: "albert"  # Alternative launcher
+      description: "Launcher and productivity tool"
+
+  media:
+    blender:
+      macos: "blender"
+      linux: "blender"
+      description: "3D creation suite"
+    
+    spotify:
+      macos: "spotify"
+      linux: "flatpak:com.spotify.Client"
+      description: "Music streaming"
+
+  utilities:
+    docker:
+      macos: "docker"
+      linux: "docker docker-compose"
+      description: "Container platform"
+    
+    ghostty:
+      macos: "ghostty"
+      linux: "special:ghostty"  # May need manual installation
+      description: "Terminal emulator"
+      notes: "Primarily macOS-focused, limited Linux support"
+    
+    utm:
+      macos: "utm"
+      linux: "qemu-kvm libvirt virt-manager"
+      description: "Virtual machine manager"
+    
+    shottr:
+      macos: "shottr"
+      linux: "flameshot"
+      description: "Screenshot tool"
+    
+    private_internet_access:
+      macos: "private-internet-access"
+      linux: "dnf:pia-manager"  # If available
+      description: "VPN client"
+      notes: "May require manual installation on Linux"
+
+  browsers:
+    chromium:
+      macos: "eloston-chromium"
+      linux: "chromium"
+      description: "Chromium browser"
+
+  communication:
+    whatsapp:
+      macos: "whatsapp"
+      linux: "flatpak:io.github.mimbrero.WhatsAppDesktop"
+      description: "WhatsApp desktop client"
+
+  gaming:
+    steam:
+      macos: "steam"
+      linux: "steam"
+      description: "Gaming platform"
+
+# Platform-specific packages
+platform_specific:
+  macos_only:
+    - "font-jetbrains-mono"  # Example of macOS-specific font installation
+  
+  linux_only:
+    - "flatpak"              # Package manager for sandboxed apps
+    - "dnf-plugins-core"     # DNF extensions
+    - "rpmfusion-free-release"
+    - "rpmfusion-nonfree-release"
+    - "vim-enhanced"         # Enhanced Vim on Fedora
+    - "zsh"                  # Might need explicit installation
+    - "util-linux-user"     # For chsh command
+    - "xclip"                # Clipboard utility for X11
+    - "wl-clipboard"         # Clipboard utility for Wayland
+    - "fontconfig"           # Font configuration
+    - "google-noto-fonts"    # Good fallback fonts
+    - "liberation-fonts"     # Microsoft-compatible fonts
+
+  asahi_linux_specific:
+    - "mesa-dri-drivers"     # GPU drivers
+    - "mesa-vulkan-drivers"  # Vulkan support
+    - "pipewire"             # Audio system
+    - "pipewire-pulseaudio"  # PulseAudio compatibility
+    - "kernel-modules-extra" # Additional kernel modules
+
+# Development environments and language-specific tools
+development_environments:
+  python:
+    macos: "python@3.11"
+    linux: "python3 python3-pip python3-dev"
+    description: "Python development environment"
+  
+  rust:
+    macos: "rust"
+    linux: "rust cargo"
+    description: "Rust programming language"
+  
+  go:
+    macos: "go"
+    linux: "golang"
+    description: "Go programming language"
+  
+  java:
+    macos: "openjdk"
+    linux: "java-latest-openjdk java-latest-openjdk-devel"
+    description: "Java development kit"
+
+# Optional packages (not installed by default)
+optional_packages:
+  advanced_tools:
+    btop:
+      macos: "btop"
+      linux: "btop"
+      description: "Modern htop alternative"
+    
+    bat:
+      macos: "bat"
+      linux: "bat"
+      description: "Cat with syntax highlighting"
+    
+    exa:
+      macos: "exa"
+      linux: "exa"
+      description: "Modern ls alternative"
+    
+    delta:
+      macos: "git-delta"
+      linux: "git-delta"
+      description: "Better git diff"
+    
+    fd:
+      macos: "fd"
+      linux: "fd-find"
+      description: "Modern find alternative"
+
+  media_creation:
+    gimp:
+      macos: "gimp"
+      linux: "gimp"
+      description: "Image editor"
+    
+    inkscape:
+      macos: "inkscape"
+      linux: "inkscape"
+      description: "Vector graphics editor"
+    
+    kdenlive:
+      macos: "kdenlive"
+      linux: "kdenlive"
+      description: "Video editor"
+
+# Installation notes
+installation_notes:
+  general:
+    - "Run setup.sh to install packages automatically"
+    - "Use --no-packages to skip package installation"
+    - "Use --brew-linux to install Homebrew on Linux for consistency"
+  
+  macos:
+    - "Homebrew will be installed automatically if not present"
+    - "Some casks may require manual permission in System Preferences"
+    - "Rosetta 2 will be installed automatically on Apple Silicon if needed"
+  
+  linux:
+    - "RPM Fusion repositories will be enabled for additional packages"
+    - "Flatpak will be set up for sandboxed GUI applications"
+    - "Some packages may require manual installation from source"
+  
+  asahi_linux:
+    - "GPU acceleration should work out of the box"
+    - "Audio requires PipeWire setup"
+    - "Some applications may have reduced functionality due to 16K page size"
