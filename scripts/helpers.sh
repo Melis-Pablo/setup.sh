@@ -189,7 +189,7 @@ convert_to_ssh_remote() {
         local repo="${BASH_REMATCH[2]}"
 
         # Construct SSH URL
-        local ssh_url="git@github.com:$username/$repo.git"
+        local ssh_url="git@github.com:$username/$repo"
 
         # Update remote URL
         if git -C "$repo_dir" remote set-url origin "$ssh_url"; then
