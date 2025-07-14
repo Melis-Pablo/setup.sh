@@ -67,4 +67,8 @@ alias vim='nvim'
 alias c='clear'
 
 # Shell integrations
-eval "$(fzf --zsh)"
+eval "$(fzf --zsh)"# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/seneca/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
